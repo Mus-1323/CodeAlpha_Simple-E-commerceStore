@@ -1,0 +1,53 @@
+<style>
+  body{
+    margin: 0;
+    padding: 0;
+  }
+  .nav-style{
+     background-color: black;
+  }
+
+  .nav-style .nav-link,
+  .nav-style .navbar-brand{
+     color: #f0f8ff !important;
+  }
+
+  .nav-style .nav-link:hover{
+     color: lightgray !important;
+  }
+  .navbar{
+    border-radius: 14px;
+  }
+</style>
+<nav class="navbar navbar-expand-lg sticky-top nav-style">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/product">Greaterhubs</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/product">ALL Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/cart">Cart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/my-order"><b>My Orders</b></a>
+        </li>
+      </ul>
+      <div class="navbar-nav  ms-auto ">
+        <%if(!currentUser){%>
+          <a class="nav-link active" href="/signup"><b>Signup</b></a>
+          <a class="nav-link" href="/login"><b>Login</b></a>
+        <%}%>
+        <%if(currentUser){%>
+        <form action="/logout" method="POST" class="d-inline">
+          <button class="nav-link btn btn-link p-0" type="submit"><b>Logout</b></button>
+        </form>
+        <%}%>
+      </div>
+    </div>
+  </div>
+</nav>

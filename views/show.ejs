@@ -1,0 +1,73 @@
+<% layout("/layouts/boilerplate") %>
+
+<a href="/product" class="back-link">Back to products</a>
+
+<section class="show-product">
+  <div class="show-image-panel">
+    <img
+      src="<%= product.image %>"
+      class="show-product-img"
+      alt="<%= product.title %>"
+      onerror="this.src='https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=1200&q=80'"
+    >
+  </div>
+
+  <div class="show-details-panel">
+    <span class="category-badge"><%= product.category %></span>
+
+    <h2 class="show-title"><%= product.title %></h2>
+    <p class="show-description"><%= product.description %></p>
+
+    <div class="show-price">Rs. <%= product.price.toLocaleString("en-IN") %></div>
+
+    <div class="detail-list">
+      <div>
+        <span>Category</span>
+        <strong><%= product.category %></strong>
+      </div>
+      <div>
+        <span>Availability</span>
+        <strong>In Stock</strong>
+      </div>
+      <div>
+        <span>Delivery</span>
+        <strong>3-5 business days</strong>
+      </div>
+      <div>
+        <span>Payment</span>
+        <strong>Cash, UPI, Card</strong>
+      </div>
+    </div>
+
+    <div class="quantity-box">
+      <span>Quantity</span>
+      <div class="quantity-controls">
+        <button type="button" class="quantity-btn" id="decreaseQty">-</button>
+        <input type="number" id="quantityInput" value="1" min="1" max="10">
+        <button type="button" class="quantity-btn" id="increaseQty">+</button>
+      </div>
+    </div>
+
+    <div class="show-actions">
+      <button
+        type="button"
+        class="btn btn-dark action-btn"
+        id="addToCartBtn"
+        data-id="<%= product._id %>"
+        data-title="<%= product.title %>"
+        data-price="<%= product.price %>"
+        data-image="<%= product.image %>"
+      >
+        Add to Cart
+      </button>
+
+      <button type="button" class="btn btn-success action-btn" id="buyNowBtn">
+        Buy Now
+      </button>
+    </div>
+
+    <p class="cart-message" id="cartMessage"></p>
+  </div>
+</section>
+
+<script src="/show.js"></script>
